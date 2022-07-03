@@ -1,0 +1,6 @@
+{
+  "logging": {
+    "errorFile": "error.log",
+    "combinedFile": "server.log"
+  }
+}
