@@ -1,8 +1,8 @@
 const winston = require("winston");
 const format = winston.format;
 const { combine, timestamp, label, printf } = format;
-const configJson = require("../../../config/config.js");
-const logConf = configJson.logging;
+const config = require("../../../config/config");
+const logConf = config.logging;
 
 logFormat = winston.format.printf((info) => {
   const formattedDate = info.timestamp;
@@ -19,10 +19,13 @@ const logger = winston.createLogger({
     // - Write all logs with importance level of `info` or less to `combined.log`
     //
     new winston.transports.File({
-      filename: logConf.errorFile,
+      filename: __dirname + "/../logs/" + logConf.errorFile,
       level: "error",
     }),
-    new winston.transports.File({ filename: logConf.combinedFile }),
+    new winston.transports.File({
+      filename: __dirname + "/../logs/" + logConf.combinedFile,
+      level: "info",
+    }),
   ],
 });
 

@@ -2,5 +2,15 @@
   "logging": {
     "errorFile": "error.log",
     "combinedFile": "server.log"
+  },
+  "server": {
+    "port": 8000,
+    "host": "127.0.0.1"
+  },
+  "database": {
+    "name": "soup",
+    "host": "localhost",
+    "user": "soup",
+    "password": "password"
   }
 }
