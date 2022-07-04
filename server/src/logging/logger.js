@@ -6,7 +6,7 @@ const logConf = config.logging;
 
 logFormat = winston.format.printf((info) => {
   const formattedDate = info.timestamp;
-  return `${formattedDate}| ${info.level} | ${info.message};`;
+  return `${formattedDate}| ${info.level} | ${info.message}.`;
 });
 
 const logger = winston.createLogger({
@@ -19,11 +19,11 @@ const logger = winston.createLogger({
     // - Write all logs with importance level of `info` or less to `combined.log`
     //
     new winston.transports.File({
-      filename: __dirname + "/../logs/" + logConf.errorFile,
+      filename: __dirname + "/../../logs/" + logConf.errorFile,
       level: "error",
     }),
     new winston.transports.File({
-      filename: __dirname + "/../logs/" + logConf.combinedFile,
+      filename: __dirname + "/../../logs/" + logConf.combinedFile,
       level: "info",
     }),
   ],
