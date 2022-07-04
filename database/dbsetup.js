@@ -20,7 +20,6 @@ con.connect((err) => {
 });
 
 const query = (queryStr, values) => {
-  logger.info(`Executing query -> ${queryStr} with values ${values}`);
   return new Promise((resolve, reject) => {
     con.query(queryStr, values, (err, result) => {
       if (err) {
