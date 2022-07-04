@@ -1,0 +1,6 @@
+2022-07-04 23:11:56| info | Executing query -> create table if not exists user(id int primary key auto_increment, firstname varchar(255) not null, lastname varchar(255)) with values undefined.
+2022-07-04 23:11:56| info | Executing query -> create table if not exists transaction(id int primary key auto_increment,timestamp int, transaction_type ENUM('DEPOSIT','WITHDRAWAL'),token varchar(255), amount decimal(8,8), user_id int, foreign key (user_id) references user(id)) with values undefined.
+2022-07-04 23:11:56| info | Server started on host 127.0.0.1 and port 8000.
+2022-07-04 23:11:56| info | Database connected.
+2022-07-04 23:11:56| info | Successfully executed query -> create table if not exists user(id int primary key auto_increment, firstname varchar(255) not null, lastname varchar(255)).
+2022-07-04 23:11:56| info | Successfully executed query -> create table if not exists transaction(id int primary key auto_increment,timestamp int, transaction_type ENUM('DEPOSIT','WITHDRAWAL'),token varchar(255), amount decimal(8,8), user_id int, foreign key (user_id) references user(id)).
