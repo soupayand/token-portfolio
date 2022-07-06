@@ -1,4 +1,11 @@
-2022-07-04 23:14:47| info | Server started on host 127.0.0.1 and port 8000.
-2022-07-04 23:14:47| info | Database connected.
-2022-07-04 23:14:47| info | Successfully executed query -> create table if not exists user(id int primary key auto_increment, firstname varchar(255) not null, lastname varchar(255)).
-2022-07-04 23:14:47| info | Successfully executed query -> create table if not exists transaction(id int primary key auto_increment,timestamp int, transaction_type ENUM('DEPOSIT','WITHDRAWAL'),token varchar(255), amount decimal(8,8), user_id int, foreign key (user_id) references user(id)).
+2022-07-06 21:16:19| info | Server started on host 127.0.0.1 and port 8000.
+2022-07-06 21:16:19| info | Successfully executed query -> create table if not exists transaction(id int primary key auto_increment,timestamp bigint, transaction_type ENUM('DEPOSIT','WITHDRAWAL'),token varchar(255), amount decimal(10,8), user_id int, foreign key (user_id) references user(id)).
+2022-07-06 21:16:19| info | Successfully executed query -> create table if not exists user(id int primary key auto_increment, firstname varchar(255) not null, lastname varchar(255)).
+2022-07-06 21:16:19| info | Successfully executed query -> create table if not exists load_status (id int primary key auto_increment, status ENUM('STARTED','COMPLETED','IN_PROGRESS','NONE'), user_id int, foreign key (user_id) references user(id)).
+2022-07-06 21:16:31| info | Server started on host 127.0.0.1 and port 8000.
+2022-07-06 21:16:31| info | Successfully executed query -> create table if not exists user(id int primary key auto_increment, firstname varchar(255) not null, lastname varchar(255)).
+2022-07-06 21:16:31| info | Successfully executed query -> create table if not exists transaction(id int primary key auto_increment,timestamp bigint, transaction_type ENUM('DEPOSIT','WITHDRAWAL'),token varchar(255), amount decimal(10,8), user_id int, foreign key (user_id) references user(id)).
+2022-07-06 21:16:31| info | Successfully executed query -> create table if not exists load_status (id int primary key auto_increment, status ENUM('STARTED','COMPLETED','IN_PROGRESS','NONE'), user_id int, foreign key (user_id) references user(id)).
+2022-07-06 21:17:12| info | Retreiving porfolio value for token BTC.
+2022-07-06 21:18:01| info | Successfully executed query -> SELECT SUM(CASE WHEN transaction_type = 'DEPOSIT' then amount WHEN transaction_type = 'WITHDRAWAL' then -amount END) AS quantity, token FROM transaction  WHERE user_id = ? AND token = ?  GROUP BY user_id.
+2022-07-06 21:18:04| info | Successfully retrieved portfolio value for token BTC.

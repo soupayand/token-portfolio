@@ -11,6 +11,12 @@
     "name": "soup",
     "host": "localhost",
     "user": "soup",
-    "password": "password"
+    "password": "password",
+    "poolSize": 100,
+    "connectionTimeout": 20000,
+    "acquireTimeout": 20000
+  },
+  "cryptocompare": {
+    "apiKey": "534069f2687af6dcba992c7e71f95730fce83284759962113a261ac6f425eb86"
   }
 }

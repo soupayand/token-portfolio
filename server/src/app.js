@@ -3,13 +3,13 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 
-const logger = require("./logging/logger.js");
+const logger = require("./logging/logger");
 const portfolioRouter = require("./routes/portfolio");
 const userRouter = require("./routes/user");
 
 app.use(bodyParser.json());
-app.use("/potfolio", portfolioRouter);
 app.use("/user", userRouter);
+app.use("/portfolio", portfolioRouter);
 
 app.get("/about", (req, res) => {
   res.end(

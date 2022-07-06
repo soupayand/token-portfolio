@@ -4,25 +4,21 @@ const config = require("../config/config");
 const dbConf = config.database;
 const setupDbHelper = require("./dbsetup-queries");
 
-const con = mysql.createConnection({
+const con = mysql.createPool({
+  connectionLimit: dbConf.poolSize,
   database: dbConf.name,
   host: dbConf.host,
   user: dbConf.user,
   password: dbConf.password,
-});
-
-con.connect((err) => {
-  if (err) {
-    console.log(err);
-    logger.error("Error establishing database connection");
-  }
-  logger.info("Database connected");
+  connectTimeout: dbConf.connectionTimeout,
+  acquireTimeout: dbConf.acquireTimeout,
 });
 
 const query = (queryStr, values) => {
   return new Promise((resolve, reject) => {
     con.query(queryStr, values, (err, result) => {
       if (err) {
+        console.log(err);
         reject(err);
         logger.error(
           `Error executing query -> ${queryStr} with values ${values}`
@@ -39,6 +35,7 @@ const query = (queryStr, values) => {
 //query(setupDbHelper.createDatabase);
 query(setupDbHelper.createUserTbl);
 query(setupDbHelper.createTransactionTbl);
+query(setupDbHelper.dataLoadStatusTbl);
 
 module.exports = {
   con,
